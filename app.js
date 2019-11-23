@@ -3,8 +3,17 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
-    res.send('I Love Treehouse');
+    res.render('index');
 });
 
-app.listen(PORT, () => console.log(`Express server running on port ${PORT}`));
+app.get('/cards', (req, res) => {
+    res.render('cards', {
+        prompt: "Who is buried in Grant's Tomb?",
+        hint: "Think about who's tomb it is."
+    });
+});
+
+app.listen(PORT, () => console.log(`Express server running on http://localhost:${PORT}`));
