@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.set('view engine', 'pug');
 
 app.use(require('./routes'));
 app.use('/cards', require('./routes/cards'));
